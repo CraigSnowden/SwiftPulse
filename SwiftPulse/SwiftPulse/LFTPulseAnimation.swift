@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LFTPulseAnimation: CALayer {
+public class LFTPulseAnimation: CALayer {
    
     var radius:                 CGFloat = 200.0
     var fromValueForRadius:     Float = 0.0
@@ -23,11 +23,11 @@ class LFTPulseAnimation: CALayer {
     // Need to implement that, because otherwise it can't find
     // the constructor init(layer:AnyObject!)
     // Doesn't seem to look in the super class
-    override init(layer: AnyObject) {
+    public override init(layer: AnyObject) {
         super.init(layer: layer)
     }
     
-    init(repeatCount: Float=Float.infinity, radius: CGFloat, position: CGPoint) {
+    public init(repeatCount: Float=Float.infinity, radius: CGFloat, position: CGPoint) {
         super.init()
         self.contentsScale = UIScreen.mainScreen().scale
         self.opacity = 0.0
@@ -48,11 +48,12 @@ class LFTPulseAnimation: CALayer {
         })
     }
 
-    required init(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setPulseRadius(radius: CGFloat) {
+    public func setPulseRadius(radius: CGFloat) {
         self.radius = radius
         let tempPos = self.position
         let diameter = self.radius * 2
